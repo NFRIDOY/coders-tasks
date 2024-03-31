@@ -8,6 +8,9 @@ import {
 } from "react-router-dom";
 import Login from './pages/Login/Login.jsx';
 import Registration from './pages/Registration/Registration.jsx';
+import Tasks from './components/Tasks/Tasks.jsx';
+import AuthProvider from './providers/AuthProvider/AuthProvider.jsx';
+import { Toaster } from 'react-hot-toast';
 
 const router = createBrowserRouter([
   {
@@ -21,11 +24,11 @@ const router = createBrowserRouter([
     ]
   },
   {
-    path: "/",
+    path: "/login",
     element: <Login />,
   },
   {
-    path: "/",
+    path: "/reg",
     element: <Registration />,
   },
 
@@ -33,7 +36,13 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Toaster
+      position="bottom-left"
+      reverseOrder={false}
+    />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
     {/* <App /> */}
   </React.StrictMode>,
 )
