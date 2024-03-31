@@ -31,8 +31,8 @@ export default function Registration() {
 
 
 
-        // createUserEmailPass(email, password)
-        createUserWithEmailAndPassword(auth, email, password)
+        // createUserWithEmailAndPassword(auth, email, password)
+        createUserEmailPass(email, password)
             .then((userCredential) => {
                 // Signed up 
                 const user = userCredential.user;
@@ -46,9 +46,7 @@ export default function Registration() {
 
                 const userObj = {
                     email,
-                    // password,
                     name,
-                    user
                 }
 
                 axios.put("/users", userObj)
@@ -56,8 +54,12 @@ export default function Registration() {
                         // console.log(userObj);
                         console.log(res.data);
                         navigate('/')
+                        console.log("Navigating to home page...");
                     })
-
+                    .catch(() => {
+                        console.log("error on Registration");
+                    })
+                navigate('/')
             })
             .catch((error) => {
                 const errorCode = error.code;

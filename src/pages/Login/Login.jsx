@@ -36,6 +36,7 @@ export default function Login() {
                 console.log(error);
                 toast.error("SignIn Failed");
             })
+        // navigate('/')
     }
 
     const hangleGoogleSignIn = () => {
@@ -59,7 +60,6 @@ export default function Login() {
                     email: user.email,
                     // password,
                     name: user?.displayName,
-                    user
                 }
 
                 console.log(userObj);
@@ -70,6 +70,7 @@ export default function Login() {
                         console.log(res.data);
                         navigate('/')
                     })
+                navigate('/')
             }).catch((error) => {
                 // Handle Errors here.
                 const errorCode = error.code;

@@ -1,7 +1,9 @@
 import { Link, NavLink } from 'react-router-dom'
 import userLogo from '../../assets/logo/user_1.png';
+import useAuth from '../../hooks/useAuth';
 
 export default function Navber() {
+    const { user, setUser, loading, setLoading, createUserEmailPass, signInEmailPass, googleSignIn, logOut } = useAuth();
     return (
         <div>
             <div className="navbar bg-base-100">
@@ -39,18 +41,23 @@ export default function Navber() {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <div className="dropdown dropdown-end">
-                        <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                            <div className="w-10 rounded-full">
-                                <img alt="Tailwind CSS Navbar component" src={userLogo} />
+                    {
+                        user && <div className="dropdown dropdown-end">
+                            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                                <div className="w-10 rounded-full">
+                                    <img alt="Tailwind CSS Navbar component" src={userLogo} />
+                                </div>
                             </div>
+                            <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+                                {
+                                    user?.displayName && <li><a>{user?.displayName}</a></li>
+                                }
+                                <li><Link to={"/login"}>Login</Link></li>
+                                <li><Link to={"/reg"}>Registration</Link></li>
+                                <li><a onClick={logOut}>Logout</a></li>
+                            </ul>
                         </div>
-                        <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
-                            <li><Link to={"/login"}>Login</Link></li>
-                            <li><Link to={"/reg"}>Registration</Link></li>
-                            <li><Link >Logout</Link></li>
-                        </ul>
-                    </div>
+                    }
                 </div>
             </div>
         </div>
