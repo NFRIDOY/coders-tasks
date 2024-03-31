@@ -71,9 +71,9 @@ export default function Registration() {
     }
 
     return (
-        <div className="mx-auto w-fit h-screen lg:p-16">
+        <div className="mx-auto w-fit h-screen py-32 md:py-40">
             <div
-                className="w-96 relative grid mb-4 -mt-6 overflow-hidden text-white shadow-lg h-28 place-items-center rounded-xl bg-gradient-to-tr from-gray-900 to-gray-800 bg-clip-border shadow-gray-900/20">
+                className="w-96 relative grid mb-4 -mt-6 overflow-hidden text-white shadow-lg h-28 place-items-center rounded-xl bg-gradient-to-tr from-blue-800  to-blue-950 bg-clip-border shadow-gray-900/20">
                 <h3 className="block font-sans text-3xl antialiased font-semibold leading-snug tracking-normal text-white">
                     Sign Up
                 </h3>
@@ -160,7 +160,7 @@ export default function Registration() {
                     <p className="flex justify-center mt-6 font-sans text-sm antialiased font-light leading-normal text-inherit">
                         Already have an account?
                         <Link to={"/login"}
-                            className="block ml-1 font-sans text-sm antialiased font-bold leading-normal text-blue-gray-900">
+                            className="block ml-1 font-sans text-sm antialiased font-bold leading-normal text-blue-gray-900 text-info">
                             Sign in
                         </Link>
                     </p>
